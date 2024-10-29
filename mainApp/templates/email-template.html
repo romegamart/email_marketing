@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Marketing</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+        }
+        .header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .content h2 {
+            color: #4CAF50;
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white !important;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Romegamart LLP</h1>
+            <p>One Stop Ro Solutions</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h2>{{ title }}</h2>
+            <p>Dear {{ name }},</p>
+            <p>{{ message |safe}}</p>
+            
+            <!-- Call-to-Action Button -->
+            <a href="https://romegamart.com/" class="button">Shop Now</a>
+
+            <p>Need help? Our customer support is here for you 24/7.</p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Romegamart. All rights reserved.</p>
+            <p><a href="https://romegamart.com/">Visit Now</a> | <a href="https://romegamart.com/privacy-policy/">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+</html>
