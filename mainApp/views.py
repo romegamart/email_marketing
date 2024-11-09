@@ -82,3 +82,46 @@ def send_bulk_emails(request):
         return HttpResponse("Emails sent successfully!", status=200)
 
     return render(request, 'send_email.html')
+
+
+
+
+
+
+
+#Referal Link
+# # views.py
+# from django.shortcuts import redirect, get_object_or_404
+# from .models import Referral
+
+# def referral_redirect(request, referral_code):
+#     referral = get_object_or_404(Referral, referral_code=referral_code)
+#     referral.track_click()  # Track the click
+#     return redirect("https://play.google.com/store/apps/details?id=com.ro_mart.ro_mart&pcampaignid=web_share")
+
+
+
+def home_page(request):
+    return render(request,'index.html')
+
+
+def report_page(request):
+    data=Referral.objects.all()
+    return render(request,'report.html',{'data':data})
+
+# views.py for unique user
+# views.py
+from django.shortcuts import redirect, get_object_or_404,render
+from .models import Referral
+
+def referral_redirect(request, referral_code):
+    referral = get_object_or_404(Referral, referral_code=referral_code)
+    
+    # Use session to track if user has clicked the link
+    session_key = f"referral_clicked_{referral_code}"
+    if not request.session.get(session_key, False):
+        # Track click and mark it in session
+        referral.track_click()
+        request.session[session_key] = True  # Mark as clicked in session
+    
+    return redirect("https://play.google.com/store/apps/details?id=com.ro_mart.ro_mart&pcampaignid=web_share")

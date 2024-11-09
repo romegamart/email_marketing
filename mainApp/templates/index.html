@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f7fc;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            margin: 15px 0;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #45a049;
+            color:white;
+        }
+
+        #copyButton {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #copyButton:hover {
+            background-color: #0056b3;
+        }
+
+        #copyButton:active {
+            background-color: #003d7a;
+        }
+
+        #referralLink {
+            word-wrap: break-word;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        #alertMessage {
+            font-size: 14px;
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Share Your Referral Link</h1>
+
+        <script>
+            window.onload = function() {
+                var referralCode = prompt("Enter Referral code:");
+
+                // Check if a referral code was entered
+                if (referralCode) {
+                    var referralLink = "/referral/" + referralCode;
+                    
+                    // Update the referral link and button text
+                    var linkElement = document.getElementById('referralLink');
+                    linkElement.href = referralLink;
+                    linkElement.innerHTML = "https://emailmarketing.pythonanywhere.com" + referralLink;
+
+                    // Show the referral link and "Copy" button
+                    document.getElementById('referralLinkContainer').style.display = 'block';
+                } else {
+                    alert("No referral code entered");
+                }
+            };
+
+            // Copy the referral link to clipboard
+            function copyLink() {
+                var copyText = document.getElementById("referralLink");
+
+                // Create a range and selection to copy the text
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().addRange(range);
+
+                // Execute the copy command
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+
+                // Show the success alert
+                var alertMessage = document.getElementById('alertMessage');
+                alertMessage.style.display = 'block';
+                setTimeout(function() {
+                    alertMessage.style.display = 'none';
+                }, 2000); // Hide the alert after 2 seconds
+            }
+        </script>
+
+        <div id="referralLinkContainer" style="display: none;">
+            <a id="referralLink" href="#">Share this link to invite friends!</a>
+            <button id="copyButton" onclick="copyLink()">Copy Link</button>
+            <p id="alertMessage">Link copied to clipboard!</p>
+        </div>
+    </div>
+</body>
+</html>

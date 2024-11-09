@@ -21,14 +21,28 @@
             border: 1px solid #dddddd;
         }
         .header {
-            background-color: #4CAF50;
+            background-color: #2e3192;
             padding: 20px;
-            text-align: center;
             color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-logo img {
+            height: 60px;
         }
         .header h1 {
-            margin: 0;
+            margin: 5px 0 0;
             font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 14px;
         }
         .content {
             padding: 20px;
@@ -43,7 +57,7 @@
         }
         .button {
             display: inline-block;
-            background-color: #4CAF50;
+            background-color: #2e3192;
             color: white !important;
             padding: 10px 20px;
             text-decoration: none;
@@ -68,15 +82,19 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Romegamart LLP</h1>
-            <p>One Stop Ro Solutions</p>
+            <div class="header-logo">
+                <img src="https://romegamart.com/media/uploads/3_1rB6SIR.jpg" alt="Romegamart Logo">
+                <div>
+                    <h1>Romegamart</h1>
+                    <p>One Stop Shop For RO and Water Purifier Industries</p>
+                </div>
+            </div>
         </div>
         
         <!-- Main Content -->
         <div class="content">
-            <h2>{{ title }}</h2>
             <p>Dear {{ name }},</p>
-            <p>{{ message |safe}}</p>
+            <p>{{ message |safe }}</p>
             
             <!-- Call-to-Action Button -->
             <a href="https://romegamart.com/" class="button">Shop Now</a>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Stats</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        td {
+            font-size: 14px;
+            color: #555;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+
+        .clicks {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #888;
+            font-size: 18px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Referral Clicks Data</h1>
+
+        {% if data %}
+            <div class="card">
+                <h3>Referral Statistics</h3>
+                <p>Here are the stats for your referral system:</p>
+
+                <!-- Referral Table -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                            <tr>
+                                <td class="username">{{ item.user.first_name }}</td>
+                                <td class="clicks">{{ item.clicks }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="no-data">
+                <p>No referral data available yet.</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
